@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const SignUp = () => {
-    const {createUser} = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
 
     const {
         register,
@@ -15,12 +15,20 @@ const SignUp = () => {
         formState: { errors },
     } = useForm()
 
-    const onSubmit = async(data) => {
-        const {email, password} = data;
-        try{
+    const onSubmit = async (data) => {
+        const { email, password, name } = data;
+        try {
             const result = await createUser(email, password)
-            console.log(result.user);
-        } catch(error){
+            if (result?.user) {
+                try {
+                    const result = await updateUserProfile(name)
+                    console.log(result);
+                } catch (error) {
+                    console.error(error.message);
+                }
+            }
+            // console.log(result.user);
+        } catch (error) {
             console.error(error.message)
         }
 

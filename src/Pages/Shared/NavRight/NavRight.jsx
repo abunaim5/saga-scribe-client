@@ -6,8 +6,13 @@ import {
     HiSun
 } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
+import userImg from '../../../assets/user.png';
 
 const NavRight = () => {
+    const { user } = useAuth()
+    // console.log(user)
+
     const [isOpen, setIsOpen] = useState(false);
 
     const handleClose = () => setIsOpen(false);
@@ -20,11 +25,13 @@ const NavRight = () => {
             </div>
             <Drawer open={isOpen} onClose={handleClose} position="right">
                 <Drawer.Header titleIcon={() => <></>} />
-                <div className="text-center space-y-2 my-10">
-                    <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="success" />
-                    <h2 className="text-2xl font-bold">Abu Naim</h2>
-                    <p>abunaim140@gmail.com</p>
-                </div>
+                {
+                    user && <div className="text-center space-y-2 my-10">
+                        <Avatar img={user?.photoURL ? user?.photoURL : userImg} rounded bordered color="success" />
+                        <h2 className="text-2xl font-bold">{user?.displayName}</h2>
+                        <p>{user?.email}</p>
+                    </div>
+                }
                 <Drawer.Items>
                     <Sidebar
                         aria-label="Sidebar with multi-level dropdown example"
@@ -43,11 +50,12 @@ const NavRight = () => {
                                         <Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0"><Link to='/'>All blogs</Link></Button>
                                         <Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0"><Link to='/'>Featured Blogs</Link></Button>
                                         <Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0"><Link to='/'>Wishlist</Link></Button>
-                                        <div className="flex justify-between gap-4 pt-10">
-                                            <Link to='/'><Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign In</Button></Link>
-                                            <Link to='/register'><Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign Up</Button></Link>
-                                        </div>
-                                        {/* <Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0"><Link to='/'>Sign Out</Link></Button> */}
+                                        {
+                                            user ? <Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0"><Link to='/'>Sign Out</Link></Button> : <div className="flex justify-between gap-4 pt-10">
+                                                <Link to='/'><Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign In</Button></Link>
+                                                <Link to='/register'><Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign Up</Button></Link>
+                                            </div>
+                                        }
                                     </Sidebar.ItemGroup>
                                 </Sidebar.Items>
                             </div>
