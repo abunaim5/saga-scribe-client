@@ -10,12 +10,21 @@ import useAuth from "../../../Hooks/useAuth";
 import userImg from '../../../assets/user.png';
 
 const NavRight = () => {
-    const { user } = useAuth()
+    const { user, signOutUser } = useAuth()
     // console.log(user)
 
     const [isOpen, setIsOpen] = useState(false);
 
     const handleClose = () => setIsOpen(false);
+
+    const handleSignOutUser = async () => {
+        try {
+            const result = await signOutUser()
+            console.log(result);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
 
     return (
         <div className="w-[5%] flex items-center justify-center">
@@ -51,9 +60,9 @@ const NavRight = () => {
                                         <Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0"><Link to='/'>Featured Blogs</Link></Button>
                                         <Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0"><Link to='/'>Wishlist</Link></Button>
                                         {
-                                            user ? <Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0"><Link to='/'>Sign Out</Link></Button> : <div className="flex justify-between gap-4 pt-10">
-                                                <Link to='/'><Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign In</Button></Link>
-                                                <Link to='/register'><Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign Up</Button></Link>
+                                            user ? <Button onClick={handleSignOutUser} className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0"><Link to='/'>Sign Out</Link></Button> : <div className="flex justify-between gap-4 pt-10">
+                                                <Link to='/' className="w-full"><Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign In</Button></Link>
+                                                <Link to='/register' className="w-full"><Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign Up</Button></Link>
                                             </div>
                                         }
                                     </Sidebar.ItemGroup>

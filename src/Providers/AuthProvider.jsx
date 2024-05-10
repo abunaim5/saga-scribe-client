@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.comfig";
 // import { useQuery } from "@tanstack/react-query";
@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
-    }
+    };
 
     const updateUserProfile = (name, photo) => {
         setLoading(true);
@@ -22,6 +22,11 @@ const AuthProvider = ({ children }) => {
             displayName: name,
             photoURL: photo
         })
+    };
+
+    const signOutUser = () => {
+        setLoading(true);
+        return signOut(auth)
     }
 
     useEffect(() => {
@@ -36,7 +41,8 @@ const AuthProvider = ({ children }) => {
         user,
         loading,
         createUser,
-        updateUserProfile
+        updateUserProfile,
+        signOutUser
     }
 
     return (
