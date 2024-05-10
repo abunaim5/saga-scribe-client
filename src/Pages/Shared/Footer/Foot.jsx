@@ -1,9 +1,10 @@
 import { Footer } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 const Foot = () => {
     return (
         <div>
-            <Footer container>
+            <Footer container className="bg-gray-200 rounded-none">
                 <div className="w-full text-center">
                     <div className="max-w-screen-xl mx-auto justify-between sm:flex sm:items-center sm:justify-between">
                         {/* <Footer.Brand
@@ -12,7 +13,7 @@ const Foot = () => {
                             alt="Flowbite Logo"
                             name="Flowbite"
                         /> */}
-                        <h1 className="text-3xl font-bold">SAGASCRIBE</h1>
+                        <Link to='/'><h1 className="text-3xl font-bold">SAGASCRIBE</h1></Link>
                         <Footer.LinkGroup>
                             <Footer.Link href="#">About</Footer.Link>
                             <Footer.Link href="#">Privacy Policy</Footer.Link>

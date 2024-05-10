@@ -8,7 +8,7 @@ const Root = () => {
     return (
         <div>
             <Header />
-            <div className="flex justify-between min-h-screen">
+            <div className="flex justify-between min-h-[calc(100vh-80px)]">
                 <NavLeft />
                 <div className="w-[90%]">
                     <Outlet />

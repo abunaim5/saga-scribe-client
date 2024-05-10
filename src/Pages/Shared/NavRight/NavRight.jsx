@@ -15,8 +15,8 @@ const NavRight = () => {
     return (
         <div className="w-[5%] flex items-center justify-center">
             <div className="flex items-center flex-col gap-2">
-                <Button onClick={() => setIsOpen(true)} className="rounded-none"><span className="text-3xl"><HiMenu /></span></Button>
-                <Button className="rounded-none"><span className="text-3xl"><HiSun /></span></Button>
+                <Button onClick={() => setIsOpen(true)} className="rounded-none"><span className="text-2xl"><HiMenu /></span></Button>
+                <Button className="rounded-none"><span className="text-2xl"><HiSun /></span></Button>
             </div>
             <Drawer open={isOpen} onClose={handleClose} position="right">
                 <Drawer.Header titleIcon={() => <></>} />
@@ -47,6 +47,7 @@ const NavRight = () => {
                                             <Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0"><Link to='/'>Sign In</Link></Button>
                                             <Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0"><Link to='/'>Sign Up</Link></Button>
                                         </div>
+                                        {/* <Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0"><Link to='/'>Sign Out</Link></Button> */}
                                     </Sidebar.ItemGroup>
                                 </Sidebar.Items>
                             </div>
