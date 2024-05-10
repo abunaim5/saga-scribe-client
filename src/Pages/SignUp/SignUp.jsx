@@ -2,11 +2,10 @@ import { Button, Card, Checkbox, Label } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import { CiWarning } from "react-icons/ci";
-import { useContext } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
+import useAuth from "../../Hooks/useAuth";
 
 const SignUp = () => {
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useAuth()
 
     const {
         register,

@@ -53,15 +53,15 @@ const NavRight = () => {
                                 </form>
                                 <Sidebar.Items>
                                     <Sidebar.ItemGroup>
-                                        <Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0"><Link to='/'>Home</Link></Button>
-                                        <Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0"><Link to='/'>Profile</Link></Button>
-                                        <Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0"><Link to='/'>Add Blog</Link></Button>
-                                        <Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0"><Link to='/'>All blogs</Link></Button>
-                                        <Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0"><Link to='/'>Featured Blogs</Link></Button>
-                                        <Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0"><Link to='/'>Wishlist</Link></Button>
+                                        <Link to='/'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Home</Button></Link>
+                                        <Link to='/'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Profile</Button></Link>
+                                        <Link to='/'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Add Blog</Button></Link>
+                                        <Link to='/'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">All blogs</Button></Link>
+                                        <Link to='/'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Featured Blogs</Button></Link>
+                                        <Link to='/'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Wishlist</Button></Link>
                                         {
                                             user ? <Button onClick={handleSignOutUser} className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0"><Link to='/'>Sign Out</Link></Button> : <div className="flex justify-between gap-4 pt-10">
-                                                <Link to='/' className="w-full"><Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign In</Button></Link>
+                                                <Link to='/login' className="w-full"><Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign In</Button></Link>
                                                 <Link to='/register' className="w-full"><Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign Up</Button></Link>
                                             </div>
                                         }

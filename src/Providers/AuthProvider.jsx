@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.comfig";
 // import { useQuery } from "@tanstack/react-query";
@@ -24,6 +24,11 @@ const AuthProvider = ({ children }) => {
         })
     };
 
+    const signInUser = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
     const signOutUser = () => {
         setLoading(true);
         return signOut(auth)
@@ -42,6 +47,7 @@ const AuthProvider = ({ children }) => {
         loading,
         createUser,
         updateUserProfile,
+        signInUser,
         signOutUser
     }
 
