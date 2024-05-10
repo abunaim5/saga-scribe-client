@@ -10,7 +10,7 @@ const Root = () => {
             <Header />
             <div className="flex justify-between min-h-[calc(100vh-80px)]">
                 <NavLeft />
-                <div className="w-[90%]">
+                <div className="w-[90%] bg-[#F2F2F2]">
                     <Outlet />
                 </div>
                 <NavRight />

@@ -2,7 +2,7 @@
 const NavLeft = () => {
     return (
         <div className="w-[5%] flex items-center justify-center">
-            <h1 className="font-bold">Left</h1>
+            <button className="font-bold -rotate-90">SUBSCRIBE</button>
         </div>
     );
 };

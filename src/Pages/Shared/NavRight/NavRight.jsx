@@ -15,8 +15,8 @@ const NavRight = () => {
     return (
         <div className="w-[5%] flex items-center justify-center">
             <div className="flex items-center flex-col gap-2">
-                <Button onClick={() => setIsOpen(true)} className="rounded-none"><span className="text-2xl"><HiMenu /></span></Button>
-                <Button className="rounded-none"><span className="text-2xl"><HiSun /></span></Button>
+                <Button onClick={() => setIsOpen(true)} className="rounded-sm bg-black"><span className="text-2xl"><HiMenu /></span></Button>
+                <Button className="rounded-sm bg-black"><span className="text-2xl"><HiSun /></span></Button>
             </div>
             <Drawer open={isOpen} onClose={handleClose} position="right">
                 <Drawer.Header titleIcon={() => <></>} />
