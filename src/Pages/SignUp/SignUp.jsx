@@ -2,8 +2,12 @@ import { Button, Card, Checkbox, Label } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import { CiWarning } from "react-icons/ci";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const SignUp = () => {
+    const {createUser} = useContext(AuthContext);
+
     const {
         register,
         handleSubmit,
@@ -11,7 +15,15 @@ const SignUp = () => {
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => {
+    const onSubmit = async(data) => {
+        const {email, password} = data;
+        try{
+            const result = await createUser(email, password)
+            console.log(result.user);
+        } catch(error){
+            console.error(error.message)
+        }
+
         console.log(data)
     }
 
