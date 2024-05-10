@@ -44,8 +44,8 @@ const NavRight = () => {
                                         <Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0"><Link to='/'>Featured Blogs</Link></Button>
                                         <Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0"><Link to='/'>Wishlist</Link></Button>
                                         <div className="flex justify-between gap-4 pt-10">
-                                            <Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0"><Link to='/'>Sign In</Link></Button>
-                                            <Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0"><Link to='/'>Sign Up</Link></Button>
+                                            <Link to='/'><Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign In</Button></Link>
+                                            <Link to='/register'><Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign Up</Button></Link>
                                         </div>
                                         {/* <Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0"><Link to='/'>Sign Out</Link></Button> */}
                                     </Sidebar.ItemGroup>
