@@ -6,7 +6,7 @@ import useAuth from "../../Hooks/useAuth";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const SignIn = () => {
-    const { signInUser } = useAuth()
+    const { signInUser, signInWithGoogle } = useAuth()
 
     const {
         register,
@@ -26,6 +26,15 @@ const SignIn = () => {
         }
 
         console.log(data)
+    }
+
+    const handleSignInWithGoogle = async () => {
+        try{
+            const result = await signInWithGoogle();
+            console.log(result.user);
+        } catch(error) {
+            console.error(error.message);
+        }
     }
 
     return (
@@ -53,7 +62,7 @@ const SignIn = () => {
                         <Label htmlFor="remember">Remember me</Label>
                     </div>
                     <Button className="rounded-sm mt-4 uppercase" type="submit">Login</Button>
-                    <Button className="rounded-sm bg-transparent border border-teal-600 enabled:hover:bg-transparent text-black uppercase" type="button"><span className="flex items-center gap-3"><span className="text-lg"><FaGoogle /></span>Login with Google</span></Button>
+                    <Button onClick={handleSignInWithGoogle} className="rounded-sm bg-transparent border border-teal-600 enabled:hover:bg-transparent text-black uppercase" type="button"><span className="flex items-center gap-3"><span className="text-lg"><FaGoogle /></span>Login with Google</span></Button>
                     <Button className="rounded-sm bg-transparent border border-teal-600 enabled:hover:bg-transparent text-black uppercase" type="button"><span className="flex items-center gap-3"><span className="text-lg"><FaGithub /></span>Login with Github</span></Button>
                 </form>
             </Card>
