@@ -1,20 +1,30 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import BlogDetailsCard from "./BlogDetailsCard";
+import useFetch from "../../Hooks/useFetch";
+import { useParams } from "react-router-dom";
 
 const BlogDetails = () => {
-    const [blogs, setBlogs] = useState([]);
 
-    useEffect(() => {
-        fetch('blogs.json')
-            .then(res => res.json())
-            .then(data => setBlogs(data))
-    }, [])
+    const { id } = useParams()
+    console.log(id);
+
+    const { isLoading, error, data } = useFetch(
+        'blog',
+        `/blogs/${id}`
+    )
+    // console.log(data)
+
+    if (isLoading) {
+        return <h1>Loading...</h1>
+    }
+
+    if(error){
+        console.log('Error find in blog details page')
+    }
 
     return (
-        <div>
-            {
-                blogs.map((blog, idx) => <BlogDetailsCard key={idx} blog={blog} />)
-            }
+        <div className="mb-20">
+            <BlogDetailsCard key={data._id} blog={data} />
         </div>
     );
 };

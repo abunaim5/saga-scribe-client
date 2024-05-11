@@ -6,11 +6,8 @@ const BlogDetailsCard = ({ blog }) => {
     return (
         <div>
             <Card
-
-                // onClick={() => setIsOpen(true)}
-                className="rounded-none rounded-t-none shadow-none border-none overflow-hidden"
+                className="rounded-none rounded-t-none bg-transparent shadow-none border-none overflow-hidden"
                 imgAlt="Meaningful alt text for an image that is not purely decorative"
-                // imgSrc={image}
                 renderImage={() => <div style={{ backgroundImage: `url(${image})` }} className="min-h-[650px] bg-fixed bg-cover bg-center">
                     <div className="w-full min-h-[650px] flex items-center justify-center flex-col bg-black bg-opacity-40 transition-all duration-1000 ease-in-out hover:bg-opacity-50 gap-5">
                         <h4 className="text-xs font-bold text-white uppercase">{category} / {read_time}</h4>
