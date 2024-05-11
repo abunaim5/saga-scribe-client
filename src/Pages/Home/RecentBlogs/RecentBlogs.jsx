@@ -5,10 +5,7 @@ import RecentBlogCard from "./RecentBlogCard";
 
 const RecentBlogs = () => {
     const [blogs, setBlogs] = useState([]);
-    console.log(blogs)
-    // const [isOpen, setIsOpen] = useState(true);
 
-    // const handleClose = () => setIsOpen(false);
     useEffect(() => {
         fetch('blogs.json')
             .then(res => res.json())
