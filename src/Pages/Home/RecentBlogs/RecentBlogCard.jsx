@@ -15,8 +15,8 @@ const RecentBlogCard = ({ blog }) => {
             renderImage={() => <Link to='/details' className=""><div style={{ backgroundImage: `url(${image})` }} className="min-h-[478px] bg-cover  bg-center transition-transform duration-1000 ease-in-out hover:scale-105 relative cursor-pointer">
                 <div className="w-full min-h-[478px] flex items-center justify-center flex-col bg-black bg-opacity-40 transition-all duration-1000 ease-in-out hover:bg-opacity-50 gap-5">
                     <h4 className="text-sm font-semibold text-white uppercase">{category} / {read_time}</h4>
-                    <h3 className="text-3xl font-bold text-white uppercase">{title}</h3>
-                    <p className="text-white italic font-medium">{story_theme}</p>
+                    <h3 className="text-3xl font-bold text-white uppercase my-1">{title}</h3>
+                    <p className="text-white italic text-lg font-merri font-semibold">{story_theme}</p>
                 </div>
             </div></Link>}
         >

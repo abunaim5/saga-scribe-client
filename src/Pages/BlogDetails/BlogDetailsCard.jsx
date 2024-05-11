@@ -1,4 +1,4 @@
-import { Button, Card } from "flowbite-react";
+import { Card } from "flowbite-react";
 
 const BlogDetailsCard = ({ blog }) => {
     const { title, image, story_theme, category, read_time, long_description } = blog;

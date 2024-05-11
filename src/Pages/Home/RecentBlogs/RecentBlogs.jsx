@@ -1,16 +1,26 @@
 // import { useState } from "react";
 
-import { useEffect, useState } from "react";
+// import { useState } from "react";
 import RecentBlogCard from "./RecentBlogCard";
+import useFetch from "../../../Hooks/useFetch";
 
 const RecentBlogs = () => {
-    const [blogs, setBlogs] = useState([]);
+    // const [blogs, setBlogs] = useState([]);
 
-    useEffect(() => {
-        fetch('blogs.json')
-            .then(res => res.json())
-            .then(data => setBlogs(data))
-    }, [])
+    const { isLoading, error, data } = useFetch(
+        'blogs',
+        '/blogs'
+    );
+
+    const blogs = data;
+
+    if (isLoading) {
+        return <h1>Loading...</h1>
+    }
+
+    if(error){
+        console.log('Error found in recent blogs')
+    }
 
     return (
         <div className="my-5 space-y-5">
