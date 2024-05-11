@@ -56,7 +56,7 @@ const NavRight = () => {
                                         <Link to='/'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Home</Button></Link>
                                         <Link to='/'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Profile</Button></Link>
                                         <Link to='/'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Add Blog</Button></Link>
-                                        <Link to='/'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">All blogs</Button></Link>
+                                        <Link to='/blogs'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">All blogs</Button></Link>
                                         <Link to='/'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Featured Blogs</Button></Link>
                                         <Link to='/'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Wishlist</Button></Link>
                                         {
