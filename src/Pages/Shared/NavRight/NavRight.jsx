@@ -58,7 +58,7 @@ const NavRight = () => {
                                         <Link to='/addBlog'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Add Blog</Button></Link>
                                         <Link to='/blogs'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">All blogs</Button></Link>
                                         <Link to='/'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Featured Blogs</Button></Link>
-                                        <Link to='/'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Wishlist</Button></Link>
+                                        <Link to='/wishlist'><Button className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Wishlist</Button></Link>
                                         {
                                             user ? <Button onClick={handleSignOutUser} className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0"><Link to='/'>Sign Out</Link></Button> : <div className="flex justify-between gap-4 pt-10">
                                                 <Link to='/login' className="w-full"><Button className="w-full rounded-sm enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign In</Button></Link>

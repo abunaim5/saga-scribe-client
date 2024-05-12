@@ -2,13 +2,11 @@ import { Button, Card } from "flowbite-react";
 import { Link } from "react-router-dom";
 
 
-const RecentBlogCard = ({ blog }) => {
+const RecentBlogCard = ({ blog, handleAddBlogToWishlist }) => {
     const { _id, title, image, story_theme, category, read_time } = blog;
 
     return (
         <Card
-
-            // onClick={() => setIsOpen(true)}
             className="rounded-none rounded-t-none shadow-none border-none overflow-hidden"
             imgAlt="Meaningful alt text for an image that is not purely decorative"
             // imgSrc={image}
@@ -20,15 +18,9 @@ const RecentBlogCard = ({ blog }) => {
                 </div>
             </div></Link>}
         >
-            {/* <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {title}
-            </h5>
-            <p className="font-normal text-gray-700 dark:text-gray-400">
-                {story_theme}
-            </p> */}
             <div className="flex gap-4">
                 {/* <Button className="w-full rounded-sm uppercase bg-transparent border-2 border-black text-black">Details</Button> */}
-                <Button className="w-full rounded-sm uppercase bg-transparent border-2 border-black text-black enabled:hover:bg-transparent font-bold">Wishlist</Button>
+                <Button onClick={() => handleAddBlogToWishlist(_id)} className="w-full rounded-sm uppercase bg-transparent border-2 border-black text-black enabled:hover:bg-transparent font-bold">Wishlist</Button>
             </div>
         </Card>
     );

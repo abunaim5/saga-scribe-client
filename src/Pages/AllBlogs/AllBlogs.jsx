@@ -2,13 +2,17 @@ import { useEffect, useState } from "react";
 import useFetch from "../../Hooks/useFetch";
 import RecentBlogCard from "../Home/RecentBlogs/RecentBlogCard";
 import { Dropdown } from "flowbite-react";
+import useMutate from "../../Hooks/useMutate";
+import useAuth from "../../Hooks/useAuth";
 // import axios from "axios";
 
 
 const AllBlogs = () => {
     // const [blogs, setBlogs] = useState([])
     // const [loading, setLoading] = useState(true)
+    const {user} = useAuth()
     const [filterUrl, setFilterUrl] = useState('/blogs')
+    const mutation = useMutate('/wishlist', 'POST')
     // console.log(filterUrl)
 
     const { isLoading, error, data, refetch } = useFetch(
@@ -40,6 +44,26 @@ const AllBlogs = () => {
         console.log('Error found in recent blogs')
     }
 
+    const handleAddBlogToWishlist = (id) => {
+        const wishedBlog = blogs.find(blog => blog._id === id)
+        const {title, category, read_time, image, story_theme, long_description, user_name, user_email, post_date, post_time } = wishedBlog;
+        const wishData = {
+            title,
+            category,
+            read_time,
+            image,
+            story_theme,
+            long_description,
+            user_email,
+            user_name,
+            post_date,
+            post_time,
+            wisher_email: user.email
+        }
+        mutation.mutate(wishData);
+    }
+    console.log(mutation.error)
+
     return (
         <div className="mb-20 space-y-5">
             <div className="flex items-center justify-center border-2 border-black h-20">
@@ -63,6 +87,7 @@ const AllBlogs = () => {
                     blogs.map((blog, idx) => <RecentBlogCard
                         key={idx}
                         blog={blog}
+                        handleAddBlogToWishlist={handleAddBlogToWishlist}
                     ></RecentBlogCard>)
                 }
             </div>
