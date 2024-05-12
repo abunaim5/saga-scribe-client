@@ -10,7 +10,7 @@ const BlogDetailsCard = ({ blog }) => {
                 imgAlt="Meaningful alt text for an image that is not purely decorative"
                 renderImage={() => <div style={{ backgroundImage: `url(${image})` }} className="min-h-[650px] bg-fixed bg-cover bg-center">
                     <div className="w-full min-h-[650px] flex items-center justify-center flex-col bg-black bg-opacity-40 transition-all duration-1000 ease-in-out hover:bg-opacity-50 gap-5">
-                        <h4 className="text-xs font-bold text-white uppercase">{category} / {read_time}</h4>
+                        <h4 className="text-xs font-bold text-white uppercase">{category} / {read_time} min read</h4>
                         <h3 className="text-5xl font-bold text-white uppercase my-4">{title}</h3>
                         <p className="text-white font-merri italic font-semibold text-xl">{story_theme}</p>
                     </div>

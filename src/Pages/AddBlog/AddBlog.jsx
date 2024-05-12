@@ -16,7 +16,7 @@ const AddBlog = () => {
         const image = form.image.value
         const theme = form.theme.value
         const description = form.description.value
-        // const theme = form.theme.value
+        
         const data = {
             title,
             category,
