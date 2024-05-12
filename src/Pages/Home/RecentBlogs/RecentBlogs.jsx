@@ -8,7 +8,7 @@ const RecentBlogs = () => {
     // const [blogs, setBlogs] = useState([]);
 
     const { isLoading, error, data } = useFetch(
-        'blogs',
+        'recentBlogs',
         '/blogs'
     );
 
@@ -19,7 +19,7 @@ const RecentBlogs = () => {
     }
 
     if(error){
-        console.log('Error found in recent blogs')
+        console.log(error)
     }
 
     return (

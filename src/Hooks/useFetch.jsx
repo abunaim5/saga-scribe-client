@@ -10,12 +10,14 @@ const getData = async (url) => {
 }
 
 const useFetch = (key, url) => {
-    const { isLoading, error, data } = useQuery({
+    const { isLoading, error, data, refetch } = useQuery({
         queryKey: [key],
-        queryFn: async () => await getData(url)
+        queryFn: async () => await getData(url),
+        refetchOnWindowFocus: false,
+        enabled: !!key
     });
 
-    return { isLoading, error, data }
+    return { isLoading, error, data, refetch }
 };
 
 export default useFetch;
