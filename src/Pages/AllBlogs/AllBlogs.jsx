@@ -84,8 +84,8 @@ const AllBlogs = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 px-2">
                 {
-                    blogs.map((blog, idx) => <RecentBlogCard
-                        key={idx}
+                    blogs.map(blog => <RecentBlogCard
+                        key={blog._id}
                         blog={blog}
                         handleAddBlogToWishlist={handleAddBlogToWishlist}
                     ></RecentBlogCard>)
