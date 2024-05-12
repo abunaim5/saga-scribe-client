@@ -1,8 +1,12 @@
 import { Button, Label, Select, TextInput } from "flowbite-react";
 import useAuth from "../../Hooks/useAuth";
+import useMutate from "../../Hooks/useMutate";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const AddBlog = () => {
     const {user} = useAuth()
+    const {isLoading, error, isSuccess, mutate} = useMutate('/blogs', 'POST')
     const currentDate = (new Date().toLocaleDateString());
     const currentTime = (new Date().toLocaleTimeString());
     
@@ -16,7 +20,7 @@ const AddBlog = () => {
         const image = form.image.value
         const theme = form.theme.value
         const description = form.description.value
-        
+
         const data = {
             title,
             category,
@@ -29,8 +33,21 @@ const AddBlog = () => {
             post_date: currentDate,
             post_time: currentTime
         }
+
+        mutate(data);
+        // console.log(isSuccess)
+
         console.log(data)
     }
+
+    if(isLoading){
+        return <h1>Loading...</h1>
+    }
+    // isSuccess && toast.success("Wow so easy!")
+    // console.log(isSuccess)
+    // // if(isSuccess){
+    //     return () => toast.success("Your blog successfully added");
+    // }
 
     return (
         <div>
@@ -54,6 +71,7 @@ const AddBlog = () => {
                                 <option>Adventure</option>
                                 <option>Historical</option>
                                 <option>Mystery</option>
+                                <option>Science Fiction</option>
                                 <option>Horror</option>
                                 <option>Fantasy</option>
                                 <option>Romance</option>
@@ -105,6 +123,7 @@ const AddBlog = () => {
                     <Button type="submit" className="rounded-none uppercase w-full mt-2">Submit</Button>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     );
 };
