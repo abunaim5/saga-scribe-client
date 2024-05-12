@@ -1,12 +1,11 @@
-// import { useState } from "react";
-
-// import { useState } from "react";
 import RecentBlogCard from "./RecentBlogCard";
 import useFetch from "../../../Hooks/useFetch";
+import useMutate from "../../../Hooks/useMutate";
+import useAuth from "../../../Hooks/useAuth";
 
 const RecentBlogs = () => {
-    // const [blogs, setBlogs] = useState([]);
-
+    const {user} = useAuth()
+    const mutation = useMutate('/wishlist', 'POST');
     const { isLoading, error, data } = useFetch(
         'recentBlogs',
         '/blogs'
@@ -22,6 +21,15 @@ const RecentBlogs = () => {
         console.log(error)
     }
 
+    const handleAddBlogToWishlist = (id) => {
+        const wishedBlog = blogs.find(blog => blog._id === id);
+        const wishData = {
+            ...wishedBlog,
+            wisher_email: user.email
+        }
+        mutation.mutate(wishData);
+    }
+
     return (
         <div className="my-5 space-y-5">
             <div className="flex items-center justify-center border-2 border-black h-20">
@@ -32,6 +40,7 @@ const RecentBlogs = () => {
                     blogs.map((blog, idx) => <RecentBlogCard
                         key={idx}
                         blog={blog}
+                        handleAddBlogToWishlist={handleAddBlogToWishlist}
                     ></RecentBlogCard>)
                 }
             </div>

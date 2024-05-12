@@ -45,24 +45,14 @@ const AllBlogs = () => {
     }
 
     const handleAddBlogToWishlist = (id) => {
-        const wishedBlog = blogs.find(blog => blog._id === id)
-        const {title, category, read_time, image, story_theme, long_description, user_name, user_email, post_date, post_time } = wishedBlog;
+        const wishedBlog = blogs.find(blog => blog._id === id);
         const wishData = {
-            title,
-            category,
-            read_time,
-            image,
-            story_theme,
-            long_description,
-            user_email,
-            user_name,
-            post_date,
-            post_time,
+            ...wishedBlog,
             wisher_email: user.email
         }
         mutation.mutate(wishData);
     }
-    console.log(mutation.error)
+    // console.log(mutation.error)
 
     return (
         <div className="mb-20 space-y-5">
