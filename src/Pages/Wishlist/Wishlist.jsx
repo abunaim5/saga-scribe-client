@@ -1,16 +1,32 @@
+import { useState } from "react";
 import useFetch from "../../Hooks/useFetch";
+import useMutate from "../../Hooks/useMutate";
 import WishlistCard from "./WishlistCard";
 
 const Wishlist = () => {
-    const { isLoading, data } = useFetch(
+    const [removeWishedBlogId, setRemoveWishedBlogId] = useState('')
+
+    const mutation = useMutate(
+        `/wishlist/${removeWishedBlogId}`,
+        'DELETE'
+    );
+    const { isLoading, data, refetch } = useFetch(
         'wishlist',
         '/wishlist'
     );
 
     const wishlistBlogs = data;
 
+    const handleRemoveBlogToWishlist = id => {
+        setRemoveWishedBlogId(id);
+        mutation.mutate()
+    }
+
     if (isLoading) {
         return <h1>Loading...</h1>
+    }
+    if(mutation.isSuccess){
+        refetch()
     }
 
     return (
@@ -23,6 +39,7 @@ const Wishlist = () => {
                     wishlistBlogs.map(blog => <WishlistCard
                         key={blog._id}
                         blog={blog}
+                        handleRemoveBlogToWishlist={handleRemoveBlogToWishlist}
                     />)
                 }
             </div>
