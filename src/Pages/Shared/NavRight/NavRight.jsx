@@ -8,6 +8,13 @@ import {
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import userImg from '../../../assets/user.png';
+// import { motion } from "framer-motion"
+
+// const variants = {
+//   open: { opacity: 1, x: 0 },
+//   closed: { opacity: 0, x: "-100%" },
+// }
+
 
 const NavRight = () => {
     const { user, signOutUser } = useAuth()

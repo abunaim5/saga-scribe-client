@@ -8,12 +8,13 @@ import AllBlogs from "../../Pages/AllBlogs/AllBlogs";
 import AddBlog from "../../Pages/AddBlog/AddBlog";
 import Wishlist from "../../Pages/Wishlist/Wishlist";
 import UpdateBlog from "../../Pages/UpdateBlog/UpdateBlog";
+import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Root />,
-    //   errorElement: <ErrorPage />,
+      errorElement: <ErrorPage />,
       children: [
         {
           index: true,
