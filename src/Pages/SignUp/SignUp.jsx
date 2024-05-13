@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import { CiWarning } from "react-icons/ci";
 import useAuth from "../../Hooks/useAuth";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useAuth()
@@ -21,17 +22,19 @@ const SignUp = () => {
             if (result?.user) {
                 try {
                     const result = await updateUserProfile(name)
-                    console.log(result);
+                    if (result.user) {
+                        toast.success('Successfully Sign Up', { position: "top-center" })
+                    }
                 } catch (error) {
                     console.error(error.message);
                 }
             }
             // console.log(result.user);
         } catch (error) {
-            console.error(error.message)
+            if (error) {
+                toast.error(`${error.message === 'Firebase: Error (auth/invalid-credential).' ? 'Invalid email or password' : error.message}`, { position: "top-center" })
+            }
         }
-
-        console.log(data)
     }
 
 
@@ -77,6 +80,9 @@ const SignUp = () => {
                     <Button className="rounded-sm mt-4" type="submit">Sign Up</Button>
                 </form>
             </Card>
+            <ToastContainer
+                position="top-center"
+            />
         </div>
     );
 };

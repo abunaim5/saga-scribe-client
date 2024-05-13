@@ -54,11 +54,11 @@ const BlogDetails = () => {
         return <h1>Loading...</h1>
     }
 
-    if (comments.isLoading){
+    if (comments.isLoading) {
         return <h1>Loading...</h1>
     }
 
-    if(comments.isSuccess){
+    if (comments.isSuccess) {
         comments.refetch();
     }
 
@@ -84,33 +84,38 @@ const BlogDetails = () => {
                         }
                     </div>
                 </div>
-                <div className="mt-24 mb-8 text-center space-y-8">
-                    <h2 className="text-3xl font-bold uppercase">Leave a comment</h2>
-                    <h4 className="text-lg font-medium">Your email address will not be published. Required fields are marked *</h4>
-                </div>
-                <form onSubmit={handleAddComment}>
-                    <div className="space-y-7">
-                        <div>
-                            <div className="mb-2 block">
-                                <Label htmlFor="comment" value="COMMENT *" />
-                            </div>
-                            <Textarea name='comment' className="rounded-none" id="comment" required rows={10} />
+                {
+                    user?.email === data?.user_email ? <h3 className="mt-24 text-center text-red-600">Looks like you&apos;re having some quality conversations on your blog! Just a heads-up, you can&apos;t comment on your own blogs. But don&apos;t worry, your readers are keeping the discussion lively!</h3> : <div className="mt-24">
+                        <div className="mb-8 text-center space-y-8">
+                            <h2 className="text-3xl font-bold uppercase">Leave a comment</h2>
+                            <h4 className="text-lg font-medium">Your email address will not be published. Required fields are marked *</h4>
                         </div>
-                        <div>
-                            <div className="mb-2 block">
-                                <Label htmlFor="name" value="NAME *" />
+                        <form onSubmit={handleAddComment}>
+                            <div className="space-y-7">
+                                <div>
+                                    <div className="mb-2 block">
+                                        <Label htmlFor="comment" value="COMMENT *" />
+                                    </div>
+                                    <Textarea name='comment' className="rounded-none" id="comment" required rows={10} />
+                                </div>
+                                <div>
+                                    <div className="mb-2 block">
+                                        <Label htmlFor="name" value="NAME *" />
+                                    </div>
+                                    <TextInput name='name' style={{ borderRadius: '0px' }} className="" id="name" type="text" defaultValue={user?.displayName} shadow readOnly />
+                                </div>
+                                <div>
+                                    <div className="mb-2 block">
+                                        <Label htmlFor="email" value="EMAIL *" />
+                                    </div>
+                                    <TextInput name='email' style={{ borderRadius: '0px' }} className="" id="email" type="email" defaultValue={user?.email} shadow readOnly />
+                                </div>
+                                <Button type="submit" className="rounded-none uppercase w-full mt-2">Comment</Button>
                             </div>
-                            <TextInput name='name' style={{ borderRadius: '0px' }} className="" id="name" type="text" defaultValue={user?.displayName} shadow readOnly />
-                        </div>
-                        <div>
-                            <div className="mb-2 block">
-                                <Label htmlFor="email" value="EMAIL *" />
-                            </div>
-                            <TextInput name='email' style={{ borderRadius: '0px' }} className="" id="email" type="email" defaultValue={user?.email} shadow readOnly />
-                        </div>
-                        <Button type="submit" className="rounded-none uppercase w-full mt-2">Comment</Button>
+                        </ form>
                     </div>
-                </ form>
+                }
+
             </div>
         </div>
     );
