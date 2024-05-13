@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import { CiWarning } from "react-icons/ci";
 import useAuth from "../../Hooks/useAuth";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignIn = () => {
     const { signInUser, signInWithGoogle } = useAuth()
@@ -19,21 +20,31 @@ const SignIn = () => {
         const { email, password } = data;
         try {
             const result = await signInUser(email, password)
-
-            console.log(result.user);
+            if (result.user) {
+                toast.success('Successfully login', { position: "top-center" })
+            }
         } catch (error) {
-            console.error(error.message)
+            if (error) {
+                if (error) {
+                    toast.error(`${error.message === 'Firebase: Error (auth/invalid-credential).' ? 'Invalid email or password' : error.message}`, { position: "top-center" })
+                }
+            }
         }
 
         console.log(data)
     }
 
     const handleSignInWithGoogle = async () => {
-        try{
+        try {
             const result = await signInWithGoogle();
+            if (result.user) {
+                toast.success('Successfully login with google', { position: "top-center" })
+            }
             console.log(result.user);
-        } catch(error) {
-            console.error(error.message);
+        } catch (error) {
+            if (error) {
+                toast.error(`${error.message === 'Firebase: Error (auth/invalid-credential).' ? 'Invalid email or password' : error.message}`, { position: "top-center" })
+            }
         }
     }
 
@@ -66,6 +77,9 @@ const SignIn = () => {
                     <Button className="rounded-sm bg-transparent border border-teal-600 enabled:hover:bg-transparent text-black uppercase" type="button"><span className="flex items-center gap-3"><span className="text-lg"><FaGithub /></span>Login with Github</span></Button>
                 </form>
             </Card>
+            <ToastContainer
+                position="top-center"
+            />
         </div>
     );
 };

@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const AddBlog = () => {
     const {user} = useAuth()
-    const {isLoading, error, isSuccess, mutate} = useMutate('/blogs', 'POST');
+    const {isLoading, isSuccess, mutate} = useMutate('/blogs', 'POST');
     const options = { month: 'long', day: 'numeric', year: 'numeric' }
     const currentDate = new Date().toLocaleDateString('en-us', options);
     const currentTime = new Date().toLocaleTimeString();
@@ -41,14 +41,11 @@ const AddBlog = () => {
         console.log(data)
     }
 
+    isSuccess && toast.success("Wow so easy!")
+
     if(isLoading){
         return <h1>Loading...</h1>
     }
-    // isSuccess && toast.success("Wow so easy!")
-    // console.log(isSuccess)
-    // // if(isSuccess){
-    //     return () => toast.success("Your blog successfully added");
-    // }
 
     return (
         <div>

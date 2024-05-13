@@ -60,7 +60,12 @@ const SignUp = () => {
                             <Label htmlFor="password" value="Password" />
                             <span className="text-red-600"> *</span>
                         </div>
-                        <input {...register("password", { required: 'Password is required.', minLength: { value: 6, message: 'Password must exceed 6 characters.' } })} type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" />
+                        <input {...register("password", {
+                            required: 'Password is required.', minLength: { value: 6, message: 'Password must exceed 6 characters.' }, pattern: {
+                                value: /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9]).{6,}$/,
+                                message: 'Password should contain at least one uppercase letter, one special character and one numeric character.'
+                            }
+                        })} type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" />
                         {errors?.password && <p role="alert" className="text-red-600 text-sm mt-2 flex items-center gap-1"><span className="text-lg"><CiWarning /></span> {errors?.password.message}</p>}
                     </div>
                     <div className="flex items-center gap-2">
