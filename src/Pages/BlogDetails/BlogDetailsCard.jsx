@@ -1,7 +1,11 @@
 import { Card } from "flowbite-react";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const BlogDetailsCard = ({ blog }) => {
-    const { title, image, story_theme, category, read_time, long_description } = blog;
+    const {user} = useAuth();
+    const { user_email, title, image, story_theme, category, read_time, long_description } = blog;
 
     return (
         <div>
@@ -17,9 +21,17 @@ const BlogDetailsCard = ({ blog }) => {
                 </div>}
             >
                 <div className="px-[350px] text-pretty space-y-12 mt-16">
-                    <h5 className="text-base font-merri font-bold tracking-tight text-gray-900 dark:text-white">
-                        SHARE
-                    </h5>
+                    <div className="flex items-center justify-between text-base font-merri font-bold tracking-tight text-gray-900 dark:text-white">
+                        <div className="flex items-center gap-6">
+                            <h2>SHARE</h2>
+                            <div className="space-x-4">
+                                <button><FaTwitter /></button>
+                                <button><FaFacebookF /></button>
+                                <button><FaInstagram /></button>
+                            </div>
+                        </div>
+                        <Link to='/edit' className={user?.email === user_email ? 'block' : 'hidden'}><button>EDIT</button></Link>
+                    </div>
                     <p className="font-normal font-merri text-gray-700 dark:text-gray-400 text-lg leading-loose">
                         {long_description}
                     </p>

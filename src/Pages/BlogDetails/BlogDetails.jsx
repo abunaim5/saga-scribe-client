@@ -54,6 +54,10 @@ const BlogDetails = () => {
         return <h1>Loading...</h1>
     }
 
+    if (comments.isLoading){
+        return <h1>Loading...</h1>
+    }
+
     if(comments.isSuccess){
         comments.refetch();
     }
