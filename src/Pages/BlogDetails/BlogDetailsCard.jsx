@@ -5,7 +5,7 @@ import useAuth from "../../Hooks/useAuth";
 
 const BlogDetailsCard = ({ blog }) => {
     const {user} = useAuth();
-    const { user_email, title, image, story_theme, category, read_time, long_description } = blog;
+    const { _id, user_email, title, image, story_theme, category, read_time, long_description } = blog;
 
     return (
         <div>
@@ -30,7 +30,7 @@ const BlogDetailsCard = ({ blog }) => {
                                 <button><FaInstagram /></button>
                             </div>
                         </div>
-                        <Link to='/edit' className={user?.email === user_email ? 'block' : 'hidden'}><button>EDIT</button></Link>
+                        <Link to={`/update/${_id}`} className={user?.email === user_email ? 'block' : 'hidden'}><button>UPDATE</button></Link>
                     </div>
                     <p className="font-normal font-merri text-gray-700 dark:text-gray-400 text-lg leading-loose">
                         {long_description}

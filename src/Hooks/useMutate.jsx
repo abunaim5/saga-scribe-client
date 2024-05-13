@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
-const mainUrl = 'http://localhost:5000'
+const mainUrl = 'https://saga-scribe-server.vercel.app'
 
 const useMutate = (url, method) => {
     const options = {

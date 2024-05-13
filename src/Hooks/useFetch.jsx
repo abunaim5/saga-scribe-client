@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
-const BASE_URL = 'http://localhost:5000'
+const BASE_URL = 'https://saga-scribe-server.vercel.app'
 
 const getData = async (url) => {
     const result = await axios.get(BASE_URL + url).then(res => res.data);

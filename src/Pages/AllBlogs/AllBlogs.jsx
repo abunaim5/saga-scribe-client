@@ -28,7 +28,7 @@ const AllBlogs = () => {
 
     // useEffect(() => {
     //     setLoading(true)
-    //     axios.get(`http://localhost:5000${filterUrl}`)
+    //     axios.get(`https://saga-scribe-server.vercel.app${filterUrl}`)
     //     .then(res => {
     //         setBlogs(res.data)
     //         setLoading(false);
