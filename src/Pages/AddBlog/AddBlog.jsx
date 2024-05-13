@@ -6,9 +6,10 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const AddBlog = () => {
     const {user} = useAuth()
-    const {isLoading, error, isSuccess, mutate} = useMutate('/blogs', 'POST')
-    const currentDate = (new Date().toLocaleDateString());
-    const currentTime = (new Date().toLocaleTimeString());
+    const {isLoading, error, isSuccess, mutate} = useMutate('/blogs', 'POST');
+    const options = { month: 'long', day: 'numeric', year: 'numeric' }
+    const currentDate = new Date().toLocaleDateString('en-us', options);
+    const currentTime = new Date().toLocaleTimeString();
     
 
     const handleAddBlog = e => {
