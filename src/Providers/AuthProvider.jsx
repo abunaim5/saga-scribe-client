@@ -1,7 +1,6 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.comfig";
-// import { useQuery } from "@tanstack/react-query";
 
 export const AuthContext = createContext();
 

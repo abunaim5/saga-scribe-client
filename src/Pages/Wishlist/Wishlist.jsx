@@ -2,9 +2,12 @@ import { useState } from "react";
 import useFetch from "../../Hooks/useFetch";
 import useMutate from "../../Hooks/useMutate";
 import WishlistCard from "./WishlistCard";
+import useAuth from "../../Hooks/useAuth";
 
 const Wishlist = () => {
-    const [removeWishedBlogId, setRemoveWishedBlogId] = useState('')
+    const [removeWishedBlogId, setRemoveWishedBlogId] = useState('');
+    const {user} = useAuth()
+    // console.log(user.email)
 
     const mutation = useMutate(
         `/wishlist/${removeWishedBlogId}`,
@@ -12,7 +15,7 @@ const Wishlist = () => {
     );
     const { isLoading, data, refetch } = useFetch(
         'wishlist',
-        '/wishlist'
+        `/wishlist/${user?.email}`
     );
 
     const wishlistBlogs = data;
