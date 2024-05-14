@@ -4,15 +4,16 @@ import RecentBlogCard from "../Home/RecentBlogs/RecentBlogCard";
 import { Dropdown } from "flowbite-react";
 import useMutate from "../../Hooks/useMutate";
 import useAuth from "../../Hooks/useAuth";
+// import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 // import axios from "axios";
 
 
 const AllBlogs = () => {
-    // const [blogs, setBlogs] = useState([])
-    // const [loading, setLoading] = useState(true)
-    const {user} = useAuth()
-    const [filterUrl, setFilterUrl] = useState('/blogs')
-    const mutation = useMutate('/wishlist', 'POST')
+    const { user } = useAuth();
+    const [filterUrl, setFilterUrl] = useState('/blogs');
+    const mutation = useMutate('/wishlist', 'POST');
+    // const navigate = useNavigate();
     // console.log(filterUrl)
 
     const { isLoading, error, data, refetch } = useFetch(
@@ -26,16 +27,6 @@ const AllBlogs = () => {
         refetch()
     }, [filterUrl, refetch])
 
-    // useEffect(() => {
-    //     setLoading(true)
-    //     axios.get(`https://saga-scribe-server.vercel.app${filterUrl}`)
-    //     .then(res => {
-    //         setBlogs(res.data)
-    //         setLoading(false);
-    //         console.log(res.data)
-    //     })
-    // }, [filterUrl])
-
     if (isLoading) {
         return <h1>Loading...</h1>
     }
@@ -45,13 +36,19 @@ const AllBlogs = () => {
     }
 
     const handleAddBlogToWishlist = (id) => {
+        if (!user) {
+            toast.warn('You need to login first.', { position: 'top-center' })
+            // return navigate('/login')
+        }
         const wishedBlog = blogs.find(blog => blog._id === id);
         const wishData = {
             ...wishedBlog,
             wisher_email: user.email
         }
         mutation.mutate(wishData);
+        toast.success('Blog added to wishlist.', { position: 'top-center' })
     }
+
     // console.log(mutation.error)
 
     return (
@@ -81,6 +78,7 @@ const AllBlogs = () => {
                     ></RecentBlogCard>)
                 }
             </div>
+            <ToastContainer position="top-center" />
         </div>
     );
 };

@@ -3,6 +3,7 @@ import useFetch from "../../../Hooks/useFetch";
 import useMutate from "../../../Hooks/useMutate";
 import useAuth from "../../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const RecentBlogs = () => {
     const {user} = useAuth()
@@ -25,6 +26,7 @@ const RecentBlogs = () => {
 
     const handleAddBlogToWishlist = (id) => {
         if(!user){
+            toast.warn('You need to login first.', {position: 'top-center'})
             return navigate('/login')
         }
         const wishedBlog = blogs.find(blog => blog._id === id);
@@ -49,6 +51,7 @@ const RecentBlogs = () => {
                     ></RecentBlogCard>)
                 }
             </div>
+            <ToastContainer position="top-center" />
         </div>
     );
 };
