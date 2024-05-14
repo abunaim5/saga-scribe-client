@@ -2,9 +2,11 @@ import RecentBlogCard from "./RecentBlogCard";
 import useFetch from "../../../Hooks/useFetch";
 import useMutate from "../../../Hooks/useMutate";
 import useAuth from "../../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const RecentBlogs = () => {
     const {user} = useAuth()
+    const navigate = useNavigate()
     const mutation = useMutate('/wishlist', 'POST');
     const { isLoading, error, data } = useFetch(
         'recentBlogs',
@@ -22,6 +24,9 @@ const RecentBlogs = () => {
     }
 
     const handleAddBlogToWishlist = (id) => {
+        if(!user){
+            return navigate('/login')
+        }
         const wishedBlog = blogs.find(blog => blog._id === id);
         const wishData = {
             ...wishedBlog,

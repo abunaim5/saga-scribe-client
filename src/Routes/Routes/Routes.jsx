@@ -9,6 +9,7 @@ import AddBlog from "../../Pages/AddBlog/AddBlog";
 import Wishlist from "../../Pages/Wishlist/Wishlist";
 import UpdateBlog from "../../Pages/UpdateBlog/UpdateBlog";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/details/:id',
-          element: <BlogDetails />
+          element: <PrivateRoute><BlogDetails /></PrivateRoute>
         },
         {
           path: '/blogs',
@@ -38,15 +39,15 @@ const router = createBrowserRouter([
         },
         {
           path: '/addBlog',
-          element: <AddBlog />
+          element: <PrivateRoute><AddBlog /></PrivateRoute>
         },
         {
           path: '/wishlist',
-          element: <Wishlist />
+          element: <PrivateRoute><Wishlist /></PrivateRoute>
         },
         {
           path: '/update/:id',
-          element: <UpdateBlog />
+          element: <PrivateRoute><UpdateBlog /></PrivateRoute>
         }
       ],
     },
