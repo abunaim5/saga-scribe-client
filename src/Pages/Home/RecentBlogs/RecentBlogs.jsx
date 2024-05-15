@@ -12,7 +12,7 @@ const RecentBlogs = () => {
     const mutation = useMutate('/wishlist', 'POST');
     const { isLoading, error, data } = useFetch(
         'recentBlogs',
-        '/blogs'
+        '/recentblogs'
     );
 
     const blogs = data;
