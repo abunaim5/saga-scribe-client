@@ -8,7 +8,7 @@ import Loader from '../../components/Loader';
 const FeaturedBlogs = () => {
     const { isLoading, data } = useFetch(
         'featured',
-        '/blogs'
+        '/featured'
     );
 
     const columnHelper = createColumnHelper()
