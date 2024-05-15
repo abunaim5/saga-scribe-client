@@ -20,7 +20,7 @@ const BlogDetailsCard = ({ blog }) => {
                     </div>
                 </div>}
             >
-                <div className="px-[350px] text-pretty space-y-12 mt-16">
+                <div className="px-4 md:px-16 lg:px-32 xl:px-56 2xl:px-[350px] text-pretty space-y-12 mt-16">
                     <div className="flex items-center justify-between text-base font-merri font-bold tracking-tight text-gray-900 dark:text-white">
                         <div className="flex items-center gap-6">
                             <h2>SHARE</h2>

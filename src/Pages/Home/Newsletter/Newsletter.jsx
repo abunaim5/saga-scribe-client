@@ -15,10 +15,10 @@ const Newsletter = () => {
     }
 
     return (
-        <div className="mb-20 bg-black bg-opacity-10 py-20">
+        <div className="mb-20 bg-black bg-opacity-10 py-20 px-2">
             <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4 ">SUBSCRIBE TO OUR NEWSLETTER</h2>
-                <p className="w-1/2 mx-auto">Share your own saga! Connect with fellow readers, share recommendations, and discuss your favorite narratives in our vibrant community forum.</p>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 ">SUBSCRIBE TO OUR NEWSLETTER</h2>
+                <p className="w-full md:w-1/2 mx-auto">Share your own saga! Connect with fellow readers, share recommendations, and discuss your favorite narratives in our vibrant community forum.</p>
             </div>
             <div>
                 <form onSubmit={handleSubscribe}>

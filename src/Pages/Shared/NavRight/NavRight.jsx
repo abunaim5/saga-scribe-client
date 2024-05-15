@@ -34,10 +34,10 @@ const NavRight = () => {
     }
 
     return (
-        <div className="w-[5%] flex items-center justify-center relative">
-            <div className="flex items-center flex-col gap-2 fixed top-1/2">
-                <Button onClick={() => setIsOpen(true)} className="rounded-sm bg-black"><span className="text-2xl"><HiMenu /></span></Button>
-                <Button className="rounded-sm bg-black"><span className="text-2xl"><HiSun /></span></Button>
+        <div className="min-w-[5%] flex items-center justify-center relative">
+            <div className="flex items-center flex-col gap-2 fixed top-1/2 bottom-0">
+                <button onClick={() => setIsOpen(true)} className="rounded-sm bg-black w-auto text-white xl:p-4 p-2"><span className="text-2xl"><HiMenu /></span></button>
+                <button className="rounded-sm bg-black text-white xl:p-4 p-2"><span className="text-2xl"><HiSun /></span></button>
             </div>
             <Drawer open={isOpen} onClose={handleClose} position="right">
                 <Drawer.Header titleIcon={() => <></>} />
@@ -60,16 +60,16 @@ const NavRight = () => {
                                 </form>
                                 <Sidebar.Items>
                                     <Sidebar.ItemGroup>
-                                        <Link to='/'><Button onClick={() =>setIsOpen(false)} className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Home</Button></Link>
-                                        <Link to='/'><Button onClick={() =>setIsOpen(false)} className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Profile</Button></Link>
-                                        <Link to='/addBlog'><Button onClick={() =>setIsOpen(false)} className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Add Blog</Button></Link>
-                                        <Link to='/blogs'><Button onClick={() =>setIsOpen(false)} className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">All blogs</Button></Link>
-                                        <Link to='/featured-blogs'><Button onClick={() =>setIsOpen(false)} className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Featured Blogs</Button></Link>
-                                        <Link to='/wishlist'><Button onClick={() =>setIsOpen(false)} className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Wishlist</Button></Link>
+                                        <Link to='/'><Button onClick={() => setIsOpen(false)} className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Home</Button></Link>
+                                        <Link to='/'><Button onClick={() => setIsOpen(false)} className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Profile</Button></Link>
+                                        <Link to='/addBlog'><Button onClick={() => setIsOpen(false)} className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Add Blog</Button></Link>
+                                        <Link to='/blogs'><Button onClick={() => setIsOpen(false)} className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">All blogs</Button></Link>
+                                        <Link to='/featured-blogs'><Button onClick={() => setIsOpen(false)} className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Featured Blogs</Button></Link>
+                                        <Link to='/wishlist'><Button onClick={() => setIsOpen(false)} className="w-full justify-normal bg-transparent enabled:hover:bg-[#F3F4F6] text-gray-900 focus:ring-0">Wishlist</Button></Link>
                                         {
-                                            user ? <Link to='/' className="w-full"><Button onClick={() =>{handleSignOutUser(), setIsOpen(false)}} className="w-full rounded-sm mt-10 enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign Out</Button></Link> : <div className="flex justify-between gap-4 pt-10">
-                                                <Link to='/login' className="w-full"><Button onClick={() =>setIsOpen(false)} className="w-full rounded-sm enabled:hover:bg-transparent text-white focus:ring-0">Sign In</Button></Link>
-                                                <Link to='/register' className="w-full"><Button onClick={() =>setIsOpen(false)} className="w-full rounded-sm enabled:hover:bg-transparent text-white focus:ring-0">Sign Up</Button></Link>
+                                            user ? <Link to='/' className="w-full"><Button onClick={() => { handleSignOutUser(), setIsOpen(false) }} className="w-full rounded-sm mt-10 enabled:hover:bg-[#F3F4F6] text-white focus:ring-0">Sign Out</Button></Link> : <div className="flex justify-between gap-4 pt-10">
+                                                <Link to='/login' className="w-full"><Button onClick={() => setIsOpen(false)} className="w-full rounded-sm enabled:hover:bg-transparent text-white focus:ring-0">Sign In</Button></Link>
+                                                <Link to='/register' className="w-full"><Button onClick={() => setIsOpen(false)} className="w-full rounded-sm enabled:hover:bg-transparent text-white focus:ring-0">Sign Up</Button></Link>
                                             </div>
                                         }
                                     </Sidebar.ItemGroup>

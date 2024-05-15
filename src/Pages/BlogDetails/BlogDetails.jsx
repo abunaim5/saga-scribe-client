@@ -69,7 +69,7 @@ const BlogDetails = () => {
     return (
         <div className="mb-20">
             <BlogDetailsCard key={data._id} blog={data} />
-            <div className="px-[374px] mt-20">
+            <div className="px-4 md:px-16 lg:px-32 xl:px-56 2xl:px-[374px] mt-20">
                 <div className="text-center mb-16">
                     <Avatar img={data?.user_photo ? data?.user_photo : userPhoto} rounded size="xl" />
                     <h4 className="text-lg font-semibold mt-6 mb-3">By {data?.user_name ? data?.user_name : 'Unknown'}</h4>
