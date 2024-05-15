@@ -3,6 +3,7 @@ import useFetch from '../../Hooks/useFetch';
 import { useMemo } from 'react';
 import { Table } from 'flowbite-react';
 import { BiSortAlt2 } from "react-icons/bi";
+import Loader from '../../components/Loader';
 
 const FeaturedBlogs = () => {
     const { isLoading, data } = useFetch(
@@ -44,7 +45,7 @@ const FeaturedBlogs = () => {
     console.log(table.getHeaderGroups())
 
     if (isLoading) {
-        return <h1>Loading...</h1>
+        return <Loader />
     }
 
     // className={`w-[${table.getTotalSize()}]`}

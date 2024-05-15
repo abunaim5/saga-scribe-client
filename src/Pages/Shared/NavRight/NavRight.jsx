@@ -8,6 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import userImg from '../../../assets/user.png';
+import Loader from "../../../components/Loader";
 // import { motion } from "framer-motion"
 
 // const variants = {
@@ -17,7 +18,7 @@ import userImg from '../../../assets/user.png';
 
 
 const NavRight = () => {
-    const { user, signOutUser } = useAuth()
+    const { user, signOutUser, loading } = useAuth()
     // console.log(user)
 
     const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +32,10 @@ const NavRight = () => {
         } catch (error) {
             console.error(error.message);
         }
+    }
+
+    if(loading){
+        return <Loader />
     }
 
     return (

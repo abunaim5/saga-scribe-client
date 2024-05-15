@@ -3,9 +3,10 @@ import useFetch from "../../Hooks/useFetch";
 import { Button, Label, Select, TextInput } from "flowbite-react";
 import useAuth from "../../Hooks/useAuth";
 import useMutate from "../../Hooks/useMutate";
+import Loader from "../../components/Loader";
 
 const UpdateBlog = () => {
-    const {user} = useAuth()
+    const { user, loading } = useAuth()
     const { id } = useParams();
 
     const mutation = useMutate(`/blogs/${id}`, 'PUT');
@@ -43,8 +44,11 @@ const UpdateBlog = () => {
         mutation.mutate(data);
     }
 
+    if (loading) {
+        return <Loader />
+    }
     if (isLoading) {
-        return <h1>Loading...</h1>
+        return <Loader />
     }
 
 

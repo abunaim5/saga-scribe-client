@@ -3,9 +3,10 @@ import useAuth from "../../Hooks/useAuth";
 import useMutate from "../../Hooks/useMutate";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import Loader from "../../components/Loader";
 
 const AddBlog = () => {
-    const {user} = useAuth()
+    const {user, loading} = useAuth()
     const {isLoading, isSuccess, mutate} = useMutate('/blogs', 'POST');
     const options = { month: 'long', day: 'numeric', year: 'numeric' }
     const currentDate = new Date().toLocaleDateString('en-us', options);
@@ -43,8 +44,11 @@ const AddBlog = () => {
 
     isSuccess && toast.success("Wow so easy!")
 
+    if(loading){
+        return <Loader />
+    }
     if(isLoading){
-        return <h1>Loading...</h1>
+        return <Loader />
     }
 
     return (

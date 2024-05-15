@@ -4,9 +4,10 @@ import { useForm } from "react-hook-form"
 import { CiWarning } from "react-icons/ci";
 import useAuth from "../../Hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
+import Loader from "../../components/Loader";
 
 const SignUp = () => {
-    const { createUser, updateUserProfile } = useAuth()
+    const { createUser, updateUserProfile, loading } = useAuth()
 
     const {
         register,
@@ -35,6 +36,10 @@ const SignUp = () => {
                 toast.error(`${error.message === 'Firebase: Error (auth/invalid-credential).' ? 'Invalid email or password' : error.message}`, { position: "top-center" })
             }
         }
+    }
+
+    if(loading){
+        return <Loader />
     }
 
 

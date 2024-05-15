@@ -7,6 +7,7 @@ import useAuth from "../../Hooks/useAuth";
 import useMutate from "../../Hooks/useMutate";
 import userPhoto from "../../assets/user.png"
 import CommentCard from "./CommentCard";
+import Loader from "../../components/Loader";
 
 const BlogDetails = () => {
     const { user } = useAuth();
@@ -51,11 +52,11 @@ const BlogDetails = () => {
     }
 
     if (isLoading) {
-        return <h1>Loading...</h1>
+        return <Loader />
     }
 
     if (comments.isLoading) {
-        return <h1>Loading...</h1>
+        return <Loader />
     }
 
     if (comments.isSuccess) {

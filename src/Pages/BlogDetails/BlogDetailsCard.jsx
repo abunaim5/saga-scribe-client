@@ -2,10 +2,15 @@ import { Card } from "flowbite-react";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import Loader from "../../components/Loader";
 
 const BlogDetailsCard = ({ blog }) => {
-    const {user} = useAuth();
+    const {user, loading} = useAuth();
     const { _id, user_email, title, image, story_theme, category, read_time, long_description } = blog;
+
+    if(loading){
+        return <Loader />
+        }
 
     return (
         <div>

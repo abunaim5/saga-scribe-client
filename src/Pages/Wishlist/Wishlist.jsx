@@ -3,10 +3,11 @@ import useFetch from "../../Hooks/useFetch";
 import useMutate from "../../Hooks/useMutate";
 import WishlistCard from "./WishlistCard";
 import useAuth from "../../Hooks/useAuth";
+import Loader from "../../components/Loader";
 
 const Wishlist = () => {
     const [removeWishedBlogId, setRemoveWishedBlogId] = useState('');
-    const {user} = useAuth()
+    const {user, loading} = useAuth()
     // console.log(user.email)
 
     const mutation = useMutate(
@@ -25,8 +26,11 @@ const Wishlist = () => {
         mutation.mutate()
     }
 
+    if (loading) {
+        return <Loader />
+    }
     if (isLoading) {
-        return <h1>Loading...</h1>
+        return <Loader />
     }
     if(mutation.isSuccess){
         refetch()

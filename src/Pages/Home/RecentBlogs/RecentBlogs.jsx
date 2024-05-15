@@ -4,6 +4,7 @@ import useMutate from "../../../Hooks/useMutate";
 import useAuth from "../../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import Loader from "../../../components/Loader";
 
 const RecentBlogs = () => {
     const {user} = useAuth()
@@ -17,7 +18,7 @@ const RecentBlogs = () => {
     const blogs = data;
 
     if (isLoading) {
-        return <h1>Loading...</h1>
+        return <Loader />
     }
 
     if(error){

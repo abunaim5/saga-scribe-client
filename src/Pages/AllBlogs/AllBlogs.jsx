@@ -7,11 +7,12 @@ import useAuth from "../../Hooks/useAuth";
 // import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { CiSearch } from "react-icons/ci";
+import Loader from "../../components/Loader";
 // import axios from "axios";
 
 
 const AllBlogs = () => {
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
     const [filterUrl, setFilterUrl] = useState('/blogs');
     // const [searchText, setSearchText] = useState('/search')
     // const [blogs, setBlogs] = useState([])
@@ -19,7 +20,7 @@ const AllBlogs = () => {
     // const navigate = useNavigate();
     // console.log(filterUrl)
 
-    const { isLoading, error, data, refetch } = useFetch(
+    const { isLoading, data, refetch } = useFetch(
         'blogs',
         filterUrl
     );
@@ -44,16 +45,15 @@ const AllBlogs = () => {
 
 
 
+    if (loading) {
+        return <Loader />
+    }
     if (isLoading) {
-        return <h1>Loading...</h1>
+        return <Loader />
     }
     // if (searchData.isLoading) {
     //     return <h1>Loading...</h1>
     // }
-
-    if (error) {
-        console.log('Error found in recent blogs')
-    }
 
     const handleAddBlogToWishlist = (id) => {
         if (!user) {

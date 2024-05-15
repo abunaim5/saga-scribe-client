@@ -6,9 +6,10 @@ import useAuth from "../../Hooks/useAuth";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Loader from "../../components/Loader";
 
 const SignIn = () => {
-    const { signInUser, signInWithGoogle } = useAuth();
+    const { signInUser, signInWithGoogle, loading } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -51,6 +52,10 @@ const SignIn = () => {
                 toast.error(`${error.message === 'Firebase: Error (auth/invalid-credential).' ? 'Invalid email or password' : error.message}`, { position: "top-center" })
             }
         }
+    }
+
+    if(loading){
+        return <Loader />
     }
 
     return (
