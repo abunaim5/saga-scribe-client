@@ -23,7 +23,7 @@ SagaScribe is a platform dedicated to celebrating the art of storytelling in all
 
 Join us on SagaScribe and embark on a journey of imagination, inspiration, and endless possibilities!
 
-## 3. Technologies Used
+## Technologies Used
 
 - HTML
 - CSS
@@ -33,7 +33,7 @@ Join us on SagaScribe and embark on a journey of imagination, inspiration, and e
 - Express
 - MongoDB
 
-## 4. Steps to Clone and Run the Project Locally
+## Steps to Clone and Run the Project Locally
 
 ### Steps to Run Locally:
 
